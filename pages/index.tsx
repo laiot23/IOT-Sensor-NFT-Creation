@@ -30,6 +30,10 @@ export default function Home() {
   >(null)
   const [formMessage, setFormMessage] = useState<string | null>(null)
 
+  // add or remove background image
+  // const backgroundImage = ""
+  const backgroundImage = "https://media.discordapp.net/attachments/1051281685234327613/1121080240471543849/bg.png";
+
   useEffect(() => {
     ;(async () => {
       if (wallet && connection && !collection && !candyMachine) {
@@ -132,6 +136,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <style>
+        {`
+          body {
+            margin: 0;
+            padding: 0;
+          }
+        `}
+      </style>
       <main
         style={{
           display: "flex",
@@ -148,14 +160,18 @@ export default function Home() {
           }}
         >
           <img
-            style={{ maxWidth: "396px", borderRadius: "8px" }}
+            style={{ 
+              marginLeft: "16px",
+              maxWidth: "396px", 
+              borderRadius: "8px" }}
             src={collection?.json?.image}
           />
           <div
             style={{
+              marginRight: "16px",
               display: "flex",
               flexDirection: "column",
-              background: "#111",
+              background: "rgba(17, 17, 17, 0.7)", // modify opacity, currently `0.7`
               padding: "32px 24px",
               borderRadius: "16px",
               border: "1px solid #222",
