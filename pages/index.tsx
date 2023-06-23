@@ -240,6 +240,8 @@ export default function Home() {
                     This checkbox needs added functionality for securely storing the public addresses
                     belonging to the users who request a refund.
 
+                */}
+
                 <label>
                   <input
                     type="checkbox"
@@ -248,9 +250,7 @@ export default function Home() {
                   />
                   Refund if goal not met.
                 </label>
-                <br></br> 
-
-                */}
+                <br></br>
                 <button disabled={!publicKey} onClick={handleMintV2}>
                   mint
                 </button>
