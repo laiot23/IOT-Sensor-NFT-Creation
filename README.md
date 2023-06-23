@@ -1,3 +1,7 @@
+# demo 
+
+demo repo to illustrate `Mint Completed` pop-up modal, and seek help on the `request refund` function
+
 To setup a Candy Machine:
 
 - Create your Candy Machine using [Sugar](https://docs.metaplex.com/programs/candy-machine/how-to-guides/my-first-candy-machine-part1) (now supports pNFTs)
