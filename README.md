@@ -89,3 +89,130 @@ Head over to [Vercel.com](https://vercel.com) and link your Github.<br><br>
 Add New Project<br><br>
 ![add new project](https://media.discordapp.net/attachments/1051281685234327613/1121085093641998336/image.png)<br><br>
 Select this repo
+
+# Creating a Candymachine 
+
+## Rust / Solana / Sugar
+
+1. Install Rust:
+The Solana CLI is built with Rust, so you'll need to install it first. To install Rust, open your terminal and run the following command:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Follow the prompts in the terminal and agree to the installation. Rustup, the Rust version manager, will be installed along with the latest stable version of Rust.
+
+2. Add Rust to PATH:
+After the Rust installation is complete, you'll need to add it to your system's PATH variable. Open a new terminal window or run the following command to apply the changes immediately:
+```
+source $HOME/.cargo/env
+```
+3. Install Solana CLI:
+Now that Rust is installed, you can proceed to install the Solana CLI. Run the following command in your terminal:
+```
+sh -c "$(curl -sSfL https://release.solana.com/v1.9.7/install)"
+```
+This command will download the Solana CLI installer script and execute it.
+
+4. Verify Solana CLI installation:
+To verify that the Solana CLI is installed correctly, run the following command:
+```
+solana --version
+```
+If installed successfully, it should display the version number of the Solana CLI.
+
+5. Install Sugar CLI:
+Sugar is a command-line tool that makes it easier to interact with Solana programs and accounts. To install Sugar, run the following command:
+```
+cargo install sugar-sdk
+```
+This command will use Cargo (Rust's package manager) to download and install the Sugar CLI.
+
+6. Verify Sugar CLI installation:
+To verify that Sugar CLI is installed correctly, run the following command:
+```
+sugar --version
+```
+If installed successfully, it should display the version number of the Sugar CLI.
+
+## Candymachine
+
+Create a new folder in your workspace named `assets`.
+![assets]()<br><br>
+
+Create a file in the `assets` directory named `0.json` and paste the following contents:
+```
+{
+    "name": "test",
+    "symbol": "DEMO",
+    "description": "This is demo metadata for demo NFT collection for devnet.",
+    "image": "0.png",
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Demo"
+        }
+    ],
+    "properties": {
+        "files": [
+            {
+                "uri": "0.png",
+                "type": "image/png"
+            }
+        ]
+    }
+}
+```
+Create another file in the assets folder named `collection.json` and paste the following contents:
+```
+{
+    "name": "tests",
+    "symbol": "DEMO",
+    "description": "This is a demo collection for devnet UI testing.",
+    "image": "collection.png",
+    "attributes": [],
+    "properties": {
+      "files": [
+        {
+          "uri": "collection.png",
+          "type": "image/png"
+        }
+      ]
+    }
+  }
+```
+Modify the metadata for your collection, and an image for your nft to your assets folder called `0.png`, repeating the process for each nft in your collection.<br><br>
+Add an image for your collection called `collection.png`.
+<br><br>
+Run the following commands in this order:
+```
+solana config set --url devet
+```
+```
+solana airdrop 2
+```
+```
+sugar config create
+```
+```
+sugar upload
+```
+```
+sugar launch
+```
+At this stage, you'll have a `config.json` where you will be required to add your guards, at least one is required. It should look something like this:
+```
+  "guards": {
+    "default": {
+      "solPayment" : {
+        "value": 1,
+        "destination": "YOUR_PUBKEY"
+      }
+    }
+  }
+}
+```
+```
+sugar guard add
+```
+Copy and paste your Candymachine ID into your `.env` file.
