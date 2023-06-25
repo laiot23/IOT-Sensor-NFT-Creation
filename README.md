@@ -137,8 +137,7 @@ If installed successfully, it should display the version number of the Sugar CLI
 
 ## Candymachine
 
-Create a new folder in your workspace named `assets`.
-![assets]()<br><br>
+Create a new folder in your workspace named `assets`.<br><br>
 
 Create a file in the `assets` directory named `0.json` and paste the following contents:
 ```
