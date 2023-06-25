@@ -33,7 +33,7 @@ export default function Home() {
   const [mintCompleted, setMintCompleted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState(false); 
 
-  // const backgroundImage = ""
+  const backgroundImage = "https://media.discordapp.net/attachments/1051281685234327613/1122553613689036951/imageedit_3_4772656086.png"
 
   useEffect(() => {
     (async () => {
@@ -157,7 +157,7 @@ export default function Home() {
       <div
         style={{
           display: "flex",
-          // backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: "repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
