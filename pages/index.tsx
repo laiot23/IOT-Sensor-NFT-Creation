@@ -30,14 +30,10 @@ export default function Home() {
     Sft | SftWithToken | Nft | NftWithToken | null
   >(null);
   const [formMessage, setFormMessage] = useState<string | null>(null);
-  const [refundPreference, setRefundPreference] = useState<boolean>(false); // Refund preference state
-  const [mintCompleted, setMintCompleted] = useState<boolean>(false); // Mint completion state
-  const [showModal, setShowModal] = useState(false); // Modal visibility state
+  const [mintCompleted, setMintCompleted] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState(false); 
 
-  // add or remove background image
   // const backgroundImage = ""
-  const backgroundImage =
-    "https://media.discordapp.net/attachments/1051281685234327613/1121080240471543849/bg.png";
 
   useEffect(() => {
     (async () => {
@@ -153,15 +149,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>pNFT Mint</title>
-        <meta name="description" content="Mint pNFTs from the UI" />
+        <title>Demo Mint</title>
+        <meta name="description" content="Get your unique NFT now!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
         style={{
           display: "flex",
-          backgroundImage: `url(${backgroundImage})`,
+          // backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: "repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -235,22 +231,6 @@ export default function Home() {
                   <span style={{ fontSize: "11px" }}>Live</span>
                   <span style={{ fontSize: "11px" }}></span>
                 </div>
-                {/* 
-
-                    This checkbox needs added functionality for securely storing the public addresses
-                    belonging to the users who request a refund.
-
-                */}
-
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={refundPreference}
-                    onChange={(e) => setRefundPreference(e.target.checked)}
-                  />
-                  Refund if goal not met.
-                </label>
-                <br></br>
                 <button disabled={!publicKey} onClick={handleMintV2}>
                   mint
                 </button>
@@ -300,7 +280,7 @@ export default function Home() {
       >
         <center>
         <h2>Mint Completed</h2>
-        {/* <p>A message for your minters!</p> */}
+        <p>A message for your minters!</p>
         </center>
       </ReactModal>
 
