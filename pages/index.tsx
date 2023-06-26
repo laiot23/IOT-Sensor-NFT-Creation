@@ -12,7 +12,7 @@ import {
   SftWithToken,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
-import { Keypair, Transaction } from "@solana/web3.js";
+import { Keypair, Transaction, SystemProgram, TransactionInstruction } from "@solana/web3.js";
 import ReactModal from "react-modal";
 import {
   getRemainingAccountsForCandyGuard,
@@ -108,6 +108,18 @@ export default function Home() {
 
       if (additionalIxs?.length) {
         tx.add(...additionalIxs);
+      }
+
+      if (refundPreference) {
+        tx.add(
+          new TransactionInstruction({
+            keys: [
+              { pubkey: publicKey, isSigner: true, isWritable: true },
+            ],
+            data: Buffer.from("Refund requested", "utf-8"),
+            programId: new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"),
+          })
+        );
       }
 
       tx.add(...instructions);
