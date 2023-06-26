@@ -30,6 +30,7 @@ export default function Home() {
     Sft | SftWithToken | Nft | NftWithToken | null
   >(null);
   const [formMessage, setFormMessage] = useState<string | null>(null);
+  const [refundPreference, setRefundPreference] = useState<boolean>(false);
   const [mintCompleted, setMintCompleted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState(false); 
 
@@ -231,6 +232,16 @@ export default function Home() {
                   <span style={{ fontSize: "11px" }}>Live</span>
                   <span style={{ fontSize: "11px" }}></span>
                 </div>
+                {/* Checkbox for refund preference 
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={refundPreference}
+                    onChange={(e) => setRefundPreference(e.target.checked)}
+                  />
+                  Refund if goal not met.
+                </label><br></br>
+                */}
                 <button disabled={!publicKey} onClick={handleMintV2}>
                   mint
                 </button>
