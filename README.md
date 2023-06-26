@@ -1,3 +1,171 @@
+# Contents
+- [Repo Description](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#simple-candy-machine-walkthrough)
+- [Setup on Mac](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#to-run-demo-locally-as-is-mac)
+- [Setup on Windows](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#to-run-locally-as-is-windows)
+- [Creating a CandyMachine](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#creating-a-candymachine)
+- [Customize your UI](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#setup-your-own-cmui)
+- [*GTFO localhost](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#ship-it-on-vercel)
+
+# Simple Candy Machine Walkthrough
+This project will show you how to clone a repo, setup your local development environment, create a candymachine, create a minting user interface, and setting up an rpc. <b>Do this with devnet first!</b> Start by cloning this repo and demoing as-is, I've included a devnet candymachine so the UI loads correctly.
+
+This `demo` branch contains a `.env` file where the `main` branch shows an `.env.template` If you're using this branch, you'll need to modify the `.env` file with your candymachine ID. If you're using the `main` branch, you'll need to change the file name to `.env`
+
+## To run demo locally AS-IS (MAC)
+
+### First
+Clone the repository to your machine. [not sure how?](https://github.com/ilovespectra/repo-demo)
+### Second
+1. Install Node.js:
+Both http-server and ngrok require Node.js to be installed on your system. If you don't have Node.js installed, you can download and install it from the [official website](https://nodejs.org)
+
+Follow the instructions specific to your operating system to complete the installation.
+
+2. Install http-server:
+Once Node.js is installed, open your terminal and run the following command to install http-server globally:
+```
+npm install -g http-server
+```
+This command will use npm (Node Package Manager) to download and install http-server globally on your system.
+
+3. Verify http-server installation:
+To verify that http-server is installed correctly, run the following command:
+```
+http-server --version
+```
+If installed successfully, it should display the version number of http-server.
+
+4. Install ngrok:
+Next, you'll install ngrok which provides secure tunnels to localhost for exposing local servers. Run the following command in your terminal to download the ngrok binary:
+```
+curl -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+```
+This command will download a compressed .zip file containing the ngrok binary.
+
+5. Unzip and move ngrok:
+After the download is complete, unzip the ngrok binary and move it to a directory that is included in your system's PATH. Run the following commands in your terminal:
+```
+unzip ngrok-stable-linux-amd64.zip
+sudo mv ngrok /usr/local/bin/
+```
+These commands will unzip the downloaded file and move the ngrok binary to /usr/local/bin/, making it accessible system-wide.
+
+6. Verify ngrok installation:
+To verify that ngrok is installed correctly, run the following command:
+```
+ngrok version
+```
+If installed successfully, it should display the version number of ngrok.
+### Third
+Depending whether you're using npm or yarn, run either:
+```
+npm install
+```
+or 
+```
+yarn
+```
+Then:
+```
+npm run dev
+```
+or 
+```
+yarn dev
+```
+Open a new terminal and run:
+```
+npx ngrock http 3000
+```
+Open this link in your browser:
+![ngrok](https://media.discordapp.net/attachments/1051281685234327613/1122877527329886418/image.png?width=1864&height=500)
+<br><br>
+You will need 1 devnet SOL to mint, plus around .023SOL for transaction fees. If you don't have devnet SOL, scroll down to [Creating a CandyMachine](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#creating-a-candymachine) and follow the steps to install Rust/Solana-CLI. Once the Solana CLI has been installed, copy your wallet public address ('pubkey'), open a command terminal window and run:
+```
+solana config set --url devnet
+```
+```
+solana airdrop 2 <PASTE_YOUR_PUBKEY>
+```
+Now you can mint from the UI and see the confirmation modal pop-up.
+
+## To run locally AS-IS (WINDOWS)
+### First
+Clone the repository to your machine. [not sure how?](https://github.com/ilovespectra/repo-demo)
+### Second
+1. Install Node.js:
+Both http-server and ngrok require Node.js to be installed on your system. You can download the Windows installer for Node.js from the official website: https://nodejs.org
+
+Download the appropriate installer for your Windows version and follow the installation instructions.
+
+2. Install http-server:
+Once Node.js is installed, open Command Prompt or PowerShell and run the following command to install http-server globally:
+```
+npm install -g http-server
+```
+This command will use npm (Node Package Manager) to download and install http-server globally on your system.
+
+3. Verify http-server installation:
+To verify that http-server is installed correctly, run the following command:
+```
+http-server --version
+```
+If installed successfully, it should display the version number of http-server.
+
+4. Install ngrok:
+Next, you'll install ngrok which provides secure tunnels to localhost for exposing local servers. Follow these steps to install ngrok on Windows:
+
+Visit the ngrok website: https://ngrok.com
+Sign up for a free account and download the Windows version of ngrok.
+Extract the downloaded ngrok ZIP file to a convenient location on your computer.
+5. Add ngrok to PATH:
+To use ngrok from anywhere in the command prompt, you need to add its location to the system's PATH variable:
+
+Open the Start menu and search for "environment variables."
+Click on "Edit the system environment variables."
+In the System Properties window, click on the "Environment Variables" button.
+In the "System variables" section, find the "Path" variable and click on "Edit."
+Click on "New" and enter the path to the directory where you extracted ngrok (e.g., C:\path\to\ngrok).
+Click "OK" to save the changes.
+6. Verify ngrok installation:
+To verify that ngrok is installed correctly, open Command Prompt or PowerShell and run the following command:
+```
+ngrok version
+```
+If installed successfully, it should display the version number of ngrok.
+### Third
+Depending whether you're using npm or yarn, run either:
+```
+npm install
+```
+or 
+```
+yarn
+```
+Then:
+```
+npm run dev
+```
+or 
+```
+yarn dev
+```
+Open a new terminal and run:
+```
+npx ngrock http 3000
+```
+Open this link in your browser:
+![ngrok](https://media.discordapp.net/attachments/1051281685234327613/1122877527329886418/image.png?width=1864&height=500)
+<br><br>
+You will need 1 devnet SOL to mint, plus around .023SOL for transaction fees. If you don't have devnet SOL, scroll down to [Creating a CandyMachine](https://github.com/ilovespectra/pnfts-mint/edit/demo/README.md#creating-a-candymachine) and follow the steps to install Rust/Solana-CLI. Once the Solana CLI has been installed, copy your wallet public address ('pubkey'), open a command terminal window and run:
+```
+solana config set --url devnet
+```
+```
+solana airdrop 2 <PASTE_YOUR_PUBKEY>
+```
+Now you can mint from the UI and see the confirmation modal pop-up.
+
 # Creating a Candymachine 
 
 ## Rust / Solana / Sugar
